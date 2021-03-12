@@ -1,10 +1,11 @@
 import time
 import urllib
 import requests
+import json
 from splinter import Browser
 from config import key, password, user_id, account_number
 
-executeable_path = {'executable_path': r'C:\Users\Vinay\Desktop\chromedriver'}
+executeable_path = {'executable_path': r'/home/simple/Desktop/TradingAlgorithms/chromedriver'}
 
 browser = Browser("chrome", **executeable_path, headless = False)
 
@@ -28,7 +29,7 @@ payload = {
 }
 
 browser.find_by_id("username0").first.fill(payload["username"])
-browser.find_by_id("password").first.fill(payload["password"])
+browser.find_by_id("password1").first.fill(payload["password"])
 browser.find_by_id("accept").first.click()
 
 browser.find_by_id("accept").first.click()
@@ -83,6 +84,8 @@ payload = {
 }
 
 authreply = requests.post(url, headers = headers, data = payload).json()
+#print(authreply)
+#print(json.dumps(authreply, indent = 4))
 
 access_token = authreply['access_token']
 #print(access_token)

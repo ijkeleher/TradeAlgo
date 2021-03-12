@@ -1,2 +1,0 @@
-# tradealgo
-algo
