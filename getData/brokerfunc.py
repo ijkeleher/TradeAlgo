@@ -247,7 +247,7 @@ def sell_stock(number_to_sell, symbol):
         'session': 'NORMAL',
         "stopPriceLinkBasis": "BID",
         "stopPriceLinkType": "PERCENT",
-        "stopPriceOffset": 6,
+        "stopPriceOffset": 15,
         'duration': 'DAY',
         'orderStrategyType': 'SINGLE',
         'orderLegCollection': [
