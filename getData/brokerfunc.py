@@ -112,10 +112,14 @@ def get_cash_balance():
 #print("Amount Ready To Trade: $" + str(account_stats[0]['securitiesAccount']['projectedBalances']['cashAvailableForTrading']))
 
 def buy_stock(number_to_buy, symbol):
-    try:
-        from getData.getToken import access_token
-    except:
-        from getData.getToken import access_token
+
+    f = open("access_token.txt", "r")
+    access_token = f.readline()
+    f.close()
+    #try:
+    #    from getData.getToken import access_token
+    #except:
+    #    from getData.getToken import access_token
 
     symbol = str(symbol)
     bearer_key = "Bearer " + access_token

@@ -5,6 +5,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 from getData.brokerfunc import get_quote, get_cash_balance, buy_stock, sell_stock, getFloat, getVolume
+from getData.getToken import getaccess
 import schedule
     
 print("\x1b[8;50;115t")
@@ -22,6 +23,7 @@ $$ |  $$ |\$$$$$$  |  \$$$$  |\$$$$$$  |\$$$$$$  |  \$$$$  |\$$$$$$  |\$$$$$$$\ 
 )
 
 STARTTIME = "07:14"
+TOKENTIME = "07:05"
 print(f"EXECUTING @ {STARTTIME}")
 
 def buy():
@@ -83,8 +85,11 @@ def buy():
     print("----------------------------------------------------------------------------------\nProgram Finished!")
 
 #buy()
+#getaccess()
 
 schedule.every().day.at(STARTTIME).do(buy)
+
+schedule.every().day.at(TOKENTIME).do(getaccess)
 
 while True:
     schedule.run_pending()
