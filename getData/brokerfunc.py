@@ -7,7 +7,6 @@ import yfinance as yf
 from secret.config import key, account_number
 from getData.getToken import getaccess
 
-
 def get_price_history(symbol):
     symbol = str(symbol)
     url = f"https://api.tdameritrade.com/v1/marketdata/{symbol}/pricehistory"
@@ -39,7 +38,7 @@ def get_quote(symbol):
 
     return quote
 
-#print(json.dumps(get_quote("ECOR"), indent = 4))
+#print(json.dumps(get_quote("SPCB"), indent = 4))
 #a = get_quote("MOTS")
 #print(a["MOTS"]["lastPrice"])
 
@@ -81,7 +80,7 @@ print(get_access_token())
 '''
 
 def get_total_balance():
-    getaccess()
+    #getaccess()
     f = open("access_token.txt", "r")
     access_token = f.readline()
     f.close()
@@ -100,8 +99,8 @@ def get_total_balance():
 #print("Account Value: $" + str(account_stats[0]['securitiesAccount']['currentBalances']['liquidationValue']))
 
 def get_cash_balance():
-    getaccess()
-    f = open("access_token.txt", "r")
+    #getaccess()
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
     bearer_key = "Bearer " + access_token
@@ -116,11 +115,38 @@ def get_cash_balance():
     return balance
 
 #account_stats = get_cash_balance()
+#print(json.dumps(account_stats, indent=4))
 #print("Amount Ready To Trade: $" + str(account_stats[0]['securitiesAccount']['projectedBalances']['cashAvailableForTrading']))
+
+def get_positions():
+    url = f"https://api.tdameritrade.com/v1/accounts/{account_number}"
+
+    getaccess()
+
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
+    access_token = f.readline()
+    f.close()
+
+    bearer_key = "Bearer " + access_token
+
+    payload = {
+        'fields': 'positions'
+    }
+
+    headers = {
+        'Authorization': bearer_key,
+        'Content-Type': 'application/json'
+    }
+
+    send_order = requests.get(url, params=payload, headers=headers).json()
+
+    return send_order
+
+print(json.dumps(get_positions(), indent = 4))
 
 def buy_stock(number_to_buy, symbol):
     #getaccess()
-    f = open("access_token.txt", "r")
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
     #try:
@@ -238,8 +264,8 @@ trail_stock("ASRT", 16)
 '''
 
 def sell_stock(number_to_sell, symbol):
-    getaccess()
-    f = open("access_token.txt", "r")
+    #getaccess()
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
         
@@ -283,8 +309,8 @@ def sell_stock(number_to_sell, symbol):
 #sell_stock(13, "AVGR")
 
 def sell_stock_normal(number_to_sell, symbol):
-    getaccess()
-    f = open("access_token.txt", "r")
+    #getaccess()
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
     symbol = str(symbol)
@@ -321,8 +347,8 @@ def sell_stock_normal(number_to_sell, symbol):
         print("Order Failed!")
 
 def place_saved_order(number_to_buy, symbol, typeof):
-    getaccess()
-    f = open("access_token.txt", "r")
+    #getaccess()
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
     symbol = str(symbol)
@@ -362,8 +388,8 @@ def place_saved_order(number_to_buy, symbol, typeof):
 #place_saved_order(1, "AAPL", "Buy")
 
 def query_saved_order():
-    getaccess()
-    f = open("access_token.txt", "r")
+    #getaccess()
+    f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
     bearer_key = "Bearer " + access_token
@@ -379,7 +405,7 @@ def query_saved_order():
 
 #print(json.dump(query_saved_order(), indent = 4))
 def get_share_balance():
-    getaccess()
+    #getaccess()
     f = open("access_token.txt", "r")
     access_token = f.readline()
     f.close()
@@ -427,7 +453,7 @@ def getFloat(symbol):
 
     return final
 
-#print(getFloat("ATOS"))
+#print(getFloat("SPCB"))
 
 def getVolume(symbol):
     key = "ce4e7efb80a707ca2b1edcec4ed54ffd"
@@ -436,9 +462,9 @@ def getVolume(symbol):
 
     data = requests.get(endpoint).json()
 
-    return data[0]['avgVolume']
+    return data[0]['volume']
 
-#print(json.dumps(getVolume("AAPL"), indent = 4))
+#print(json.dumps(getVolume("SPCB"), indent = 4))
 
 def get15(symbol):
 
