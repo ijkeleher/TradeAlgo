@@ -27,7 +27,6 @@ TOKENTIME = "07:05"
 print(f"EXECUTING @ {STARTTIME}")
 
 def buy():
-    start = time.time()
     print("Starting...")
     url = "https://www.tradingview.com/markets/stocks-usa/market-movers-gainers/"
     siteinfo = requests.get(url)
@@ -58,8 +57,9 @@ def buy():
 
     for stock in doneList:
         try: #there are mischars in the stocks!
+            print(stock)
             quote = get_quote(stock)
-            if quote[stock]['closePrice'] < 5.00 and quote[stock]['netChange'] >= 0.2 and quote[stock]['openPrice'] < quote[stock]['lastPrice'] and getVolume(stock) > 1000000 and float(getFloat(stock)) < 100000000.0:
+            if quote[stock]['lastPrice'] < 5.00 and quote[stock]['netChange'] >= 0.1 and quote[stock]['openPrice'] < quote[stock]['lastPrice'] and getVolume(stock) > 5000000 and float(getFloat(stock)) < 50000000.0:
                 stockList.append(stock)
         except:
             pass
@@ -73,17 +73,17 @@ def buy():
     for stocky in stockList:
         quote1 = get_quote(stocky)
         stockCount = stockDiv / quote1[str(stocky)]['lastPrice']
-        realStockAmt.append(round(stockCount))
-
-    monkeyCount = 0
-    for monkey in stockList:
-        buy_stock(realStockAmt[monkeyCount], stockList[monkeyCount])
-        print("Order Placed For: " + str(stockList[monkeyCount]) + " Number of Shares Bought: " + str(realStockAmt[monkeyCount]))
-        sell_stock(realStockAmt[monkeyCount], stockList[monkeyCount])
-        print("Order Placed For: " + str(stockList[monkeyCount]) + " Number of Shares Trailed: " + str(realStockAmt[monkeyCount]))
-        monkeyCount += 1
+        realStockAmt = round(stockCount)
+        buy_stock(realStockAmt, stocky)
+        print("Order Placed For: " + str(stocky) + " Number of Shares Bought: " + str(realStockAmt))
+        sell_stock(realStockAmt, stocky)
+        print("Order Placed For: " + str(stocky) + " Number of Shares Trailed: " + str(realStockAmt))
 
     print("----------------------------------------------------------------------------------\nProgram Finished!")
+
+
+#getaccess()
+#buy()
 
 
 schedule.every().day.at(TOKENTIME).do(getaccess)
