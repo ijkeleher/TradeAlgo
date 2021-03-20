@@ -47,19 +47,19 @@ def getaccess():
     # Answer the Security Questions.
     if browser.is_text_present('What is your paternal grandmother\'s first name?'):
         browser.find_by_id("secretquestion0").first.click()
-        browser.find_by_id('secretquestion0').first.fill('alwar')
+        browser.find_by_id('secretquestion0').first.fill('')
 
     elif browser.is_text_present('What is your father\'s middle name?'):
         browser.find_by_id("secretquestion0").first.click()
-        browser.find_by_id('secretquestion0').first.fill('babu')
+        browser.find_by_id('secretquestion0').first.fill('')
 
     elif browser.is_text_present('What was your high school mascot?'):
         browser.find_by_id("secretquestion0").first.click()
-        browser.find_by_id('secretquestion0').first.fill('viking')
+        browser.find_by_id('secretquestion0').first.fill('')
 
     elif browser.is_text_present('What was the name of your junior high school? (Enter only \'Dell\' for Dell Junior High School.)'):
         browser.find_by_id("secretquestion0").first.click()
-        browser.find_by_id('secretquestion0').first.fill('miller')
+        browser.find_by_id('secretquestion0').first.fill('')
 
     # Submit results
     browser.find_by_id('accept').first.click()
