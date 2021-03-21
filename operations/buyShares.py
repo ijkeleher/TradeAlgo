@@ -35,23 +35,18 @@ def buy():
     content = siteinfo.content
     html = content
     parsed_html = BeautifulSoup(html, features="lxml")
-    badlist = []
-    goodlist = []
+
+    doneList = []
     for link in parsed_html.find_all('a'):
         a = link.get('href')
         if "symbol" in str(a) and "-" in str(a):
             if i < 25:
-                badlist.append(a)
                 i += 1
             else:
-                goodlist.append(a)
+                x = a.split("-")
+                x = x[1].split("/")
+                doneList.append(x[0])
                 i += 1
-
-    doneList = []
-    for z in goodlist:
-        x = z.split("-")
-        y = x[1].split("/")
-        doneList.append(y[0])
 
     stockList = []
 

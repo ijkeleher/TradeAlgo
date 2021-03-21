@@ -121,8 +121,6 @@ def get_cash_balance():
 def get_positions():
     url = f"https://api.tdameritrade.com/v1/accounts/{account_number}"
 
-    getaccess()
-
     f = open(r"C:\Users\Vinay\Desktop\tradealgo\getData\access_token.txt", "r")
     access_token = f.readline()
     f.close()
@@ -138,11 +136,15 @@ def get_positions():
         'Content-Type': 'application/json'
     }
 
-    send_order = requests.get(url, params=payload, headers=headers).json()
+    send_order = requests.get(url, params=payload, headers=headers)
 
-    return send_order
+    if send_order.status_code == 401 or send_order.status_code == 403:
+        getaccess()
+        get_positions()
 
-print(json.dumps(get_positions(), indent = 4))
+    return send_order.json()
+
+#print(json.dumps(get_positions(), indent = 4))
 
 def buy_stock(number_to_buy, symbol):
     #getaccess()
@@ -344,7 +346,9 @@ def sell_stock_normal(number_to_sell, symbol):
     if send_order.status_code == 200 or send_order.status_code == 201:
         print("Order Placed!")
     else:
-        print("Order Failed!")
+        print(send_order.content)
+
+
 
 def place_saved_order(number_to_buy, symbol, typeof):
     #getaccess()

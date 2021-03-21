@@ -1,3 +1,2 @@
-Add profit securing - when 100% profit, sell original
 Add more params for safer trades
 Add live price charting + position tracking
