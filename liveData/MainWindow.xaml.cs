@@ -28,10 +28,10 @@ namespace LiveData
     {
         static HttpClient client = new HttpClient();
         
-        public static string apikey = "XYAFQKNYUQGXPEMX388NEQW6JTVIPI0N";
-        public static string password = "Golden246";
-        public static string user_id = "vinayven";
-        public static string account_number = "279346630";
+        public static string apikey = "";
+        public static string password = "";
+        public static string user_id = "";
+        public static string account_number = "";
 
         public MainWindow()
         {
