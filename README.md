@@ -9,7 +9,8 @@ TradeAlgo uses web scraping to pull a list of stocks which are predicted to rise
 checked to validate if they match the parameters set in the code. (These parameters are created by me after extensive research on how to predict a rising stock)
 
 After this, the total balance of your TD Ameritrade account is pulled using the TD Ameritrade API and your total balance is split among the stocks which matched the set 
-parameters.
+parameters. You can change how much money from your account is allocated to be used with the algorithm by changing `balance` at line 63 in `operations/buyShares.py` to
+the desired amount.
 
 Finally, the buy function is called to execute all orders with a trailing stop loss to ensure minimal losses.
 
