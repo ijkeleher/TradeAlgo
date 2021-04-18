@@ -1,2 +1,3 @@
 Add more params for safer trades
 Add live price charting + position tracking
+Rewrite in Golang
