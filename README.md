@@ -44,6 +44,22 @@ or
 python3 sellShares.py
 ```
 
+If everything is done properly, you should see something like this:
+
+![Correct Representation](demo.png "Demo")
+
+**If you only want to see a list of stocks that are recommended by the algorithm:** 
+
+```
+python list.py
+
+or
+
+python3 list.py
+```
+
+This will return a list of stocks that would have been purchased if you were to run `buyShares.py`
+
 # Wrap-Up
 
 Thanks for using my code!

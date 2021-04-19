@@ -9,7 +9,7 @@ from getData.getToken import getaccess
 import schedule
     
 print("\x1b[8;50;115t")
-    
+
 print('''
  $$$$$$\              $$\                $$$$$$\    $$\                         $$\       
 $$  __$$\             $$ |              $$  __$$\   $$ |                        $$ |      
@@ -52,7 +52,6 @@ def buy():
 
     for stock in doneList:
         try: #there are mischars in the stocks!
-            print(stock)
             quote = get_quote(stock)
             if quote[stock]['lastPrice'] < 5.00 and quote[stock]['netChange'] >= 0.1 and quote[stock]['openPrice'] < quote[stock]['lastPrice'] and getVolume(stock) > 5000000 and float(getFloat(stock)) < 50000000.0:
                 stockList.append(stock)
@@ -62,8 +61,6 @@ def buy():
     length = len(stockList)
     balance = get_cash_balance()
     stockDiv = balance[0]['securitiesAccount']['projectedBalances']['cashAvailableForTrading'] / float(length)
-    
-    realStockAmt = []
 
     for stocky in stockList:
         quote1 = get_quote(stocky)

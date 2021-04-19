@@ -1,7 +1,7 @@
 import sys, os.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import requests, json
+import requests
 from bs4 import BeautifulSoup
 import yfinance as yf
 from secret.config import key, account_number
