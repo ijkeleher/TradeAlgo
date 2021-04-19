@@ -17,7 +17,7 @@ Finally, the buy function is called to execute all orders with a trailing stop l
 # How do I set it up?
 
 In `secret/config.py`, you will need to set your information in each variable. After that, you will need to set your security questions in `getData/getToken.py` and 
-`getData/getTokenDirect.py` because the login process to your account needs to be automated to get the `access_token` needed to operate TD Ameritrade functions on your account.
+`getData/getTokenDirect.py` because the login process to your account is automated with chromedriver in order to get your `access_token` to execute TD Ameritrade functions on your account.
 
 You will also need to change your chrome driver paths in the code to match your systems path.
 
