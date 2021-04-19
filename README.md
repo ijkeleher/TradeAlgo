@@ -16,7 +16,7 @@ Finally, the buy function is called to execute all orders with a trailing stop l
 
 # How do I set it up?
 
-In `secret/config.py`, you will need to set your information in each variable. You will notice there is a variable called `key`. This variable is your API key for TD Ameritrade's Developer application. In order to make one of these, you will need to register an account at (https://developer.tdameritrade.com/)[https://developer.tdameritrade.com/]. Then, create a new app and wait for it to be approved. Once it is approved, you can start using the API key to execute TD Ameritrade API functions with the API. After that, you will need to set your security questions in `getData/getToken.py` and 
+In `secret/config.py`, you will need to set your information in each variable. You will notice there is a variable called `key`. This variable is your API key for TD Ameritrade's Developer application. In order to make one of these, you will need to register an account at https://developer.tdameritrade.com/. Then, create a new app and wait for it to be approved. Once it is approved, you can start using the API key to execute TD Ameritrade API functions with the API. After that, you will need to set your security questions in `getData/getToken.py` and 
 `getData/getTokenDirect.py` because the login process to your account is automated with chromedriver in order to get your `access_token` to execute TD Ameritrade functions on your account.
 
 You will also need to change your chrome driver paths in the code to match your systems path.
