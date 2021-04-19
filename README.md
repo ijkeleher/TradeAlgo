@@ -22,8 +22,6 @@ You will also need to change your chrome driver paths in the code to match your 
 
 # Usage
 
-The batch files are there to run the programs using task scheduler for windows. These are no longer needed because of the built in scheduling in the code.
-
 To run the program, make sure everything is set up properly (including all libraries installed) and you are in the `operations` directory. You may adjust your `STARTTIME` and
 `TOKENTIME` values as you please. This will control the time you get your token and when you execute your buying program. It's important to set `TOKENTIME` a couple minutes 
 earlier than `STARTTIME` because it takes a few minutes to get the token which is NEEDED to run the buying program.
